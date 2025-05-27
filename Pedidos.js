@@ -48,17 +48,6 @@ app.delete('/Pedidos/:id', (req, res) => {
      });
 });
 
-app.put('/Pedidos/:id', (req, res) => {
-     const { id } = req.params;
-     const { Cliente_Id, Clt_Id, Data_Pedido, Valor_Total, Observacoes} = req.body;
-     db.query('update Pedidos set Cliente_Id = ?, Clt_Id = ?, Data_Pedido = ?, Valor_Total = ?, Observacoes = ? where id = ?', [Cliente_Id, Clt_Id, Data_Pedido, Valor_Total, Observacoes, id], (err, results) => {
-        if(err) {
-            res.status(500).json(`Houve um erro ao atualizar algo da tabela de Pedido`);
-        }
-        res.status(200).json({message: `Pedido atualizado com sucesso!`});
-     });
-});
-
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 })
